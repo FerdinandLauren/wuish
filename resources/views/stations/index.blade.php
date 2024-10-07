@@ -24,10 +24,11 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <a href="{{ route('stations.show', $station->id) }}" class="text-blue-600 hover:text-blue-900 mr-4">View</a>
                             <a href="{{ route('stations.edit', $station->id) }}" class="text-yellow-600 hover:text-yellow-900 mr-4">Edit</a>
-                            <form action="{{ route('stations.destroy', $station->id) }}" method="POST" style="display:inline-block;">
+                            <button class="text-red-600 hover:text-red-900" onclick="deleteStation({{ $station->id }})">Delete</button>
+
+                            <form id="delete-form-{{ $station->id }}" action="{{ route('stations.destroy', $station->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -36,4 +37,27 @@
         </table>
     </div>
 </div>
+
+<!-- SweetAlert2 script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function deleteStation(stationId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Submit the form
+            document.getElementById('delete-form-' + stationId).submit();
+        }
+    })
+}
+</script>
+
 @endsection

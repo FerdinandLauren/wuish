@@ -7,6 +7,9 @@
 
     <!-- Styles -->
     @vite('resources/css/app.css')
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
