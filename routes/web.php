@@ -6,6 +6,7 @@ use App\Http\Controllers\StationController;
 Route::resource('stations', StationController::class);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\LandingPageController;
+
+Route::get('/', [LandingPageController::class, 'index']);
+
