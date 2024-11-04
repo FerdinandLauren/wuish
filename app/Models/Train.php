@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Station extends Model
+class Train extends Model
 {
     use HasFactory;
 
-    protected $table = 'stations';
+    protected $table = 'trains';
 
     protected $fillable = [
         'name',
-        'city',
+        'type',
         'admin_id', // To link to the Admin
     ];
 

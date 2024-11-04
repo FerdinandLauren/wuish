@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->integer('capacity');
+            $table->enum('class', ['economy', 'business', 'executive']);
             $table->timestamps();
         });
     }
